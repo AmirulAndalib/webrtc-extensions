@@ -1744,6 +1744,63 @@ partial interface RTCRtpTransceiver {
       last packet belonging to this frame was received over the network.
     </p>
   </section>
+  <section id="expected-latency">
+    <h2>
+      RTCConfiguration expected latency extension
+    </h2>
+    <p>
+      The {{RTCConfiguration}} dictionary is defined in [[WEBRTC]].
+      This document extends that dictionary with an additional parameter
+      to provide a hint on the latency expected by the web application.
+    </p>
+    <pre class="idl">
+    enum RTCConfigurationExpectedLatency {
+      "best",
+      "no-expectation"
+    };
+    partial dictionary RTCConfiguration {
+      RTCConfigurationExpectedLatency expectedLatency = "best";
+    };
+    </pre>
+    <section id="rtcconfiguration-expected-latency-attribute">
+      <h3>
+        RTCConfiguration expected latency extension
+      </h3>
+      <dl data-link-for="RTCConfiguration" data-dfn-for="RTCConfiguration" class="attributes">
+        <dt>
+          <dfn data-idl>expectedLatency</dfn> of type <span class="idlMemberType">{{RTCConfigurationExpectedLatency}}</span>
+        </dt>
+        <dd>
+          <p>The latency expected by the web application.</p>
+        </dd>
+      </dl>
+      <table data-link-for="RTCConfigurationExpectedLatency" data-dfn-for="RTCConfigurationExpectedLatency" class="simple">
+        <tbody>
+          <tr>
+            <th colspan="2">Enumeration description (non-normative)</th>
+          </tr>
+          <tr>
+            <td><dfn data-idl>best</dfn></td>
+            <td>
+              <p>
+                The User Agent is expected to set up the network link to optimize the connection latency.
+                For that purpose, it SHOULD use techniques like network slicing if available.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td><dfn data-idl>no-expectation</dfn></td>
+            <td>
+              <p>
+                The User Agent is expected to set up the network link without trying to optimize the connection latency.
+                It MAY instead try to optimize for some other purposes like power consumption.
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </section>
   <section class="informative" id="security-considerations">
     <h2>
       Security Considerations
