@@ -1755,11 +1755,11 @@ partial interface RTCRtpTransceiver {
     </p>
     <pre class="idl">
     enum RTCConfigurationExpectedLatency {
-      "best",
+      "lowest",
       "no-expectation"
     };
     partial dictionary RTCConfiguration {
-      RTCConfigurationExpectedLatency expectedLatency = "best";
+      RTCConfigurationExpectedLatency expectedLatency = "lowest";
     };
     </pre>
     <section id="rtcconfiguration-expected-latency-attribute">
@@ -1780,7 +1780,7 @@ partial interface RTCRtpTransceiver {
             <th colspan="2">Enumeration description (non-normative)</th>
           </tr>
           <tr>
-            <td><dfn data-idl>best</dfn></td>
+            <td><dfn data-idl>lowest</dfn></td>
             <td>
               <p>
                 The User Agent is expected to set up the network link to optimize the connection latency.
