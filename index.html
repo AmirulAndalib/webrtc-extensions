@@ -1744,37 +1744,37 @@ partial interface RTCRtpTransceiver {
       last packet belonging to this frame was received over the network.
     </p>
   </section>
-  <section id="expected-latency">
+  <section id="target-latency">
     <h2>
-      RTCConfiguration expected latency extension
+      RTCConfiguration target latency extension
     </h2>
     <p>
       The {{RTCConfiguration}} dictionary is defined in [[WEBRTC]].
       This document extends that dictionary with an additional parameter
-      to provide a hint on the latency expected by the web application.
+      to provide a hint on the latency targeted by the web application.
     </p>
     <pre class="idl">
-    enum RTCConfigurationExpectedLatency {
+    enum RTCConfigurationTargetLatency {
       "lowest",
-      "no-expectation"
+      "none"
     };
     partial dictionary RTCConfiguration {
-      RTCConfigurationExpectedLatency expectedLatency = "lowest";
+      RTCConfigurationTargetLatency targetLatency = "lowest";
     };
     </pre>
-    <section id="rtcconfiguration-expected-latency-attribute">
+    <section id="rtcconfiguration-target-latency-attribute">
       <h3>
-        RTCConfiguration expected latency extension
+        RTCConfiguration target latency extension
       </h3>
       <dl data-link-for="RTCConfiguration" data-dfn-for="RTCConfiguration" class="attributes">
         <dt>
-          <dfn data-idl>expectedLatency</dfn> of type <span class="idlMemberType">{{RTCConfigurationExpectedLatency}}</span>
+          <dfn data-idl>targetLatency</dfn> of type <span class="idlMemberType">{{RTCConfigurationTargetLatency}}</span>
         </dt>
         <dd>
-          <p>The latency expected by the web application.</p>
+          <p>The latency targeted by the web application.</p>
         </dd>
       </dl>
-      <table data-link-for="RTCConfigurationExpectedLatency" data-dfn-for="RTCConfigurationExpectedLatency" class="simple">
+      <table data-link-for="RTCConfigurationTargetLatency" data-dfn-for="RTCConfigurationTargetLatency" class="simple">
         <tbody>
           <tr>
             <th colspan="2">Enumeration description (non-normative)</th>
@@ -1784,12 +1784,14 @@ partial interface RTCRtpTransceiver {
             <td>
               <p>
                 The User Agent is expected to set up the network link to optimize the connection latency.
-                For that purpose, it SHOULD use techniques like network slicing if available.
+                For that purpose, it SHOULD use techniques like network slicing as described in
+                <a href="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3273">3GPP TS 28.530</a>
+                if available.
               </p>
             </td>
           </tr>
           <tr>
-            <td><dfn data-idl>no-expectation</dfn></td>
+            <td><dfn data-idl>none</dfn></td>
             <td>
               <p>
                 The User Agent is expected to set up the network link without trying to optimize the connection latency.
